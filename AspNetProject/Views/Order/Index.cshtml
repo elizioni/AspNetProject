@@ -1,0 +1,88 @@
+﻿@model  AspNetProject.ViewModels.OrderViewModel
+
+   @{
+        ViewBag.Title = "";
+        Layout = Layout = "~/Views/Shared/_Layout.cshtml";
+   }
+<style>
+
+    #ordersTitle {
+        text-align: center;
+        font-size: 1.5em;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: saddlebrown;
+    }
+    #ordersTable th,td{
+        border:black solid 2px;
+    }
+    #ordersTable {
+        position:relative;
+        top: 50px;
+        left: 32%;
+    }
+    p {
+        position:relative;
+        font-size: 1.2em;
+        top: 150px;
+        left: 32%;
+    }
+ #purchase {
+     position:relative;
+     top: 145px;
+     left: 36%;
+ }
+</style>
+
+   <h2 id="ordersTitle">Orders Menu</h2><br />
+
+<body>
+@if (Model.OrderItems != null && Model.OrderItems.Count > 0)
+{
+
+    <table id="ordersTable">
+        <tr>
+            <th>User</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+
+        </tr>
+        @for (int i = 0; i < Model.OrderItems.Count(); i++)
+        {
+            <tr>
+                <td>@User.Identity.Name</td>
+                <td>@Model.ProductsName[i]</td>
+                <td>@Model.OrderItems[i].Product.Price$</td>
+                <td>@Model.OrderItems[i].Quantity</td>
+                <td>@Html.ActionLink("Remove", "Remove", "Order", new { id = @Model.OrderItems[i].Id},null)</td>
+
+            </tr>
+
+        }
+    </table>
+    <br /><br />
+    <table id="ordersTable">
+        <tr>
+            <th>User</th>
+            <th>Total Price</th>
+            <th>Total Quantity</th>
+        </tr>
+        <tr>
+            <td>@User.Identity.Name</td>
+            <td>@Model.TotalPrice$</td>
+            <td>@Model.TotalQuantity</td>
+        </tr>
+    </table>
+
+    <form method="get" action="@Url.Action("Receipt", "Order")">
+        <input type="submit" id="purchase" class="btn btn-primary" value="Purchase" />
+    </form>
+}
+else
+{
+    <p>You currently have no items in your order!</p>
+    
+}
+
+
+</body>

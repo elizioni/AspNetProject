@@ -1,0 +1,35 @@
+﻿@model  ICollection<AspNetProject.Models.Ad>
+@{
+    ViewBag.Title = "Home Page";
+}
+<body>
+    <h2>Fishing For You</h2>
+    <form action="/Home/New" method="get">
+
+        @if (User.IsInRole("Admin"))
+        {
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary">Add New Product</button>
+            </div>
+        }
+    </form>
+
+    <br><br>
+
+    <div class="row">
+        @foreach (var ad in @Model)
+        {
+
+            <div class="col-md-3">
+                @Html.ActionLink(ad.Title, "Details", "Product", new { id = ad.Id }, null)<br>
+                <p>@ad.Description</p><br>
+                <img src="@ad.Image" height="200" width="200" />
+                <br><br />
+            </div>
+
+        }
+
+    </div>
+</body>
+
+

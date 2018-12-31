@@ -1,0 +1,70 @@
+﻿@model AspNetProject.ViewModels.AdProductViewModel
+@{
+    ViewBag.Title = "NewAd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Ad</h2>
+
+@using (Html.BeginForm("CreateAd", "Home"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.AdDescription)
+        @Html.TextBoxFor(m => m.AdDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.AdDescription)
+    </div>
+    //add an image by the url adress
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AdDate)
+        @Html.TextBoxFor(m => m.AdDate, new {@class = "form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Image)
+        @Html.TextBoxFor(m => m.Image, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.productPublisher)
+        @Html.TextBoxFor(m => m.productPublisher, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.productPublisher)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.productDescription)
+        @Html.TextBoxFor(m => m.productDescription, new {@class = "form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.productPrice)
+        @Html.TextBoxFor(m => m.productPrice, new {@class = "form-control"})
+        @Html.ValidationMessageFor(m => m.productPrice)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.productFirstImage)
+        @Html.TextBoxFor(m => m.productFirstImage, new {@class = "form-control"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.productSecondImage)
+        @Html.TextBoxFor(m => m.productSecondImage, new {@class = "form-control"})
+    </div>
+
+  
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,17 @@
+﻿@model AspNetProject.Models.Product
+
+@{
+    Layout = Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h4>Publisher: <em>@Model.Publisher</em></h4>
+<h2>@Model.Description</h2><br />
+<p>Price: <strong>@Model.Price$</strong></p><br />
+
+<img src=@Model.firstImage height="200" width="200"> <img src=@Model.secondImage height="200" width="200"> <br />
+
+<form method="post" action="@Url.Action("Create", "Order", new {Id = Model.Id})">
+    <label for="number">Amount: </label>
+    <input id="number" type="number" name="amount" min="1">
+    <input type="image" src="~/Content/AddCart.png" alt="Submit Form" height="80" width="80" id="cart"/>
+</form>

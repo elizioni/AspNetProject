@@ -1,0 +1,23 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "title";   
+}
+<style>
+    h2 {
+        color: dodgerblue;
+        text-align:center;
+    }
+     p {
+         margin: auto 50px;
+         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+         font-weight:bold;
+         font-size: 1.2em;
+         text-align:center;
+     }
+</style>
+
+
+<h2>Order Submitted!</h2><br />
+<p>Congratulations! Your order is on the way to the adress: @Model</p><br/>
+<p>Payment is only by cash.</p>
